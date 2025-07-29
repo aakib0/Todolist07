@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import AddTaskForm from './components/AddTaskForm'
-import './App.css'
+import React,{use, useState} from 'react'
+import AddTaskForm from "./components/AddTaskForm";
+import TaskList from "./components/TaskList"
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [tasks,setTasks] = useState([]);
+  const addTask = (task) => {
+       setTasks([...tasks,task])
+  }
 
   return (
     <>
-<h1 className="text-3xl font-bold text-blue-500">Hello Tailwind</h1>
-<AddTaskForm/>
+    <div className='min-h-screen bg-gray-700 flex flex-col items-center py-10 px-4'>
+      <h1 className='text-4xl font-bold mb-6 text-blue-600'>My To-Do App</h1>
+    <AddTaskForm onAdd={addTask}/>
+    <TaskList tasks={tasks}/>
+    </div>
     </>
   )
 }
