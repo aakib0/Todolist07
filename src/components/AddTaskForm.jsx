@@ -13,7 +13,7 @@ const AddTaskForm = ({ onAdd }) => {
   return (
     <form onSubmit={handleSubmit} className='flex gap-4 mb-6'>
       <input type="text"
-      className='px-4 py-2 border border-gray-300 rounded-lg focus:outline-none'
+      className='text-white px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none '
       placeholder='Enter a task'
       value={input}
       onChange={(e) => setInput(e.target.value)}

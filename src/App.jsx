@@ -4,6 +4,7 @@ import TaskList from "./components/TaskList"
 
 const App = () => {
   const [tasks,setTasks] = useState([]);
+
   const addTask = (task) => {
        setTasks([...tasks,task])
   }
@@ -13,12 +14,19 @@ const App = () => {
     setTasks(filteredTasks);
   }
 
+  const editTask = (indexToEdit, newText) => {
+    const updatedTasks = tasks.map((task,index)=>
+    index === indexToEdit ? newText : task
+    );
+    setTasks(updatedTasks);
+  };
+
   return (
     <>
     <div className='min-h-screen bg-gray-700 flex flex-col items-center py-10 px-4'>
       <h1 className='text-4xl font-bold mb-6 text-blue-600'>My To-Do App</h1>
     <AddTaskForm onAdd={addTask}/>
-    <TaskList tasks={tasks} onDelete={deleteTask} />
+    <TaskList tasks={tasks} onDelete={deleteTask} onEdit={editTask} />
     </div>
     </>
   )
